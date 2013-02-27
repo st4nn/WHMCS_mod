@@ -1,5 +1,5 @@
 <?php
-
+include("conectar.php");
 function modulostuno_ConfigOptions() {
 
 	# Should return an array of the module options for each product - maximum of 24
@@ -270,19 +270,10 @@ function modulostuno_AdminServicesTabFieldsSave($params) {
         "var3"=>$_POST['modulefields'][2],
     ),array("serviceid"=>$params['serviceid']));
 }
-}
+
 function RegistrarVisita($Cadena1, $Cadena2, $Cadena3)
 {
-	if (!($link=mysql_connect("127.0.0.1","root","holamundo"))) 
-	   { 
-	      echo "Error conectando a la base de datos."; 
-	      exit(); 
-	   } 
-	   if (!mysql_select_db("broncoce_bronco",$link)) 
-	   { 
-	      echo "Error seleccionando la base de datos."; 
-	      exit(); 
-	   }
+	$link = Conectarse();
 	   
 	$sql = "
 		INSERT INTO Prueba 
